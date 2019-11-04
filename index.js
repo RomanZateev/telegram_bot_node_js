@@ -16,12 +16,6 @@ const bot = new TelegramBot(token,
         }
     });
 
-require('http').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
-    res.end('')
-})
-
-
-
 bot.on('message', msg => {
     bot.sendMessage(msg.chat.id, `Hola ${msg.contact.first_name} ${msg.contact.last_name}`);
 })
