@@ -10,8 +10,10 @@ const bot = new TelegramBot(token,
         request: {
             agentClass: Agent,
             agentOptions: {
-                socksHost: '185.232.20.215',
-                socksPort: '1080'
+                socksHost: 'orbtl.s5.opennetwork.cc',
+                socksPort: '999',
+                socksUsername: '981105764',
+                socksPassword: 'PUlBJeTZ'
             }
         }
     });
