@@ -10,7 +10,7 @@ const localTOKEN = `1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g`
 
 var TOKEN = process.env.TOKEN
 
-const PORT = `3000`
+const PORT = process.env.PORT
 
 const URL = `https://my-applicate.herokuapp.com/`
 
