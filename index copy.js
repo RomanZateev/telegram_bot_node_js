@@ -72,6 +72,3 @@ bot.onText(/\/start/, (msg) => {
 
     bot.sendMessage(msg.chat.id, "Welcome");        
 });
-
-bot.on("polling_error", (err) => console.log(err));
-
