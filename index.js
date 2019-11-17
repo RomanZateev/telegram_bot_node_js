@@ -32,6 +32,12 @@ const bot = new TelegramBot(TOKEN,
         }
     });
 
+app.listen(port, function() {
+    console.log('Port' + PORT);
+    console.log('Token' + TOKEN);
+});
+
+
 bot.setWebHook(URL + TOKEN)
 
 bot.on('message', (msg) => {
