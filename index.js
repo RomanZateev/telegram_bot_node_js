@@ -6,11 +6,13 @@ var Agent = require('socks5-https-client/lib/Agent')
 
 var fs = require('fs')
 
-const TOKEN = `1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g`
+const localTOKEN = `1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g`
+
+var TOKEN = process.env.TOKEN
 
 const PORT = `3000`
 
-const URL = `https://my-applicate.herokuapp.com`
+const URL = `https://my-applicate.herokuapp.com/`
 
 const localURL = `https://de5d44cd.ngrok.io`
 
@@ -30,7 +32,7 @@ const bot = new TelegramBot(TOKEN,
         }
     });
 
-bot.setWebHook(`${URL}/bot${TOKEN}`)
+bot.setWebHook(URL + TOKEN)
 
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
