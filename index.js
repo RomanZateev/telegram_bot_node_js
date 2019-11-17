@@ -1,14 +1,20 @@
-const TelegramBot = require('node-telegram-bot-api');
+const TelegramBot = require('node-telegram-bot-api')
 
-const token = '1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g'
+var Agent = require('socks5-https-client/lib/Agent')
 
-var Agent = require('socks5-https-client/lib/Agent');
+var fs = require('fs')
 
-var fs = require('fs');
+const TOKEN = "1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g"
 
-const bot = new TelegramBot(token, 
+const PORT = "3000"
+
+const URL = "https://de5d44cd.ngrok.io"
+
+const bot = new TelegramBot(TOKEN, 
     {
-        polling: true,
+        webHook: {
+            port: PORT
+        },
         request: {
             agentClass: Agent,
             agentOptions: {
@@ -20,6 +26,8 @@ const bot = new TelegramBot(token,
         }
     });
 
+bot.setWebHook(`${URL}/bot${TOKEN}`)
+
 bot.on('message', msg => {
     
     var Hi = 'hi'
@@ -30,15 +38,6 @@ bot.on('message', msg => {
     if (msg.text.toString() == "GOKILLA") {
         bot.sendMessage(msg.chat.id,"GOKILLA лучший!");
     } 
-   /*
-    if (msg.text){
-        bot.sendMessage(msg.chat.id, "Hola my friend",
-        {
-            "reply_markup": {
-                "keyboard": [["HI"],   ["GANG"], ["GOKILLA"]]
-                }
-        });
-    }*/
 
     var photo = "photo"
 
