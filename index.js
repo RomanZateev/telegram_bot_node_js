@@ -1,77 +1,16 @@
-process.env.NTBA_FIX_319 = 1
+process.env.NTBA_FIX_319 = 1;
 
-const TelegramBot = require('node-telegram-bot-api')
+const TelegramBot = require('node-telegram-bot-api');
 
-var Agent = require('socks5-https-client/lib/Agent')
+// replace the value below with the Telegram token you receive from @BotFather
+const token = '1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g';
 
-var fs = require('fs')
+// Create a bot that uses 'polling' to fetch new updates
+const bot = new TelegramBot(token, {polling: true});
 
-const TOKEN = `1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g`
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
 
-const PORT = `3000`
-
-const URL = `https://my-applicate.herokuapp.com`
-
-const localURL = `https://de5d44cd.ngrok.io`
-
-const bot = new TelegramBot(TOKEN, 
-    {
-        webHook: {
-            port: PORT
-        },
-        request: {
-            agentClass: Agent,
-            agentOptions: {
-                socksHost: 'orbtl.s5.opennetwork.cc',
-                socksPort: '999',
-                socksUsername: '981105764',
-                socksPassword: 'PUlBJeTZ'
-            }
-        }
-    });
-
-bot.setWebHook(`${URL}/bot${TOKEN}`)
-
-bot.on('message', msg => {
-    
-    var Hi = 'hi'
-    if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
-        bot.sendMessage(msg.chat.id,"Hi OG!");
-    }
-
-    if (msg.text.toString() == "GOKILLA") {
-        bot.sendMessage(msg.chat.id,"GOKILLA лучший!");
-    } 
-
-    var photo = "photo"
-
-    const buffer = fs.readFileSync('images/gokilla.png');
-
-    if (msg.text.toString().toLowerCase().includes(photo)){
-        bot.sendPhoto(msg.chat.id, buffer)
-    }
-
-    var video = "video"
-
-    if (msg.text.toString().toLowerCase().includes(video)){
-
-        const buffer = fs.readFileSync('videos/Gokilla - Парень без жопы.mp4');
-
-        bot.sendVideo(msg.chat.id, buffer,
-            {
-                caption : "Как тебе?",
-                reply_markup: 
-                {
-                    "keyboard": [["Годнота!"], ["Вата!"], ["ОУДЖИ", "Жека шарит!"]]
-                }
-            });
-    }
-})
-
-bot.onText(/\/start/, (msg) => {
-
-    bot.sendMessage(msg.chat.id, "Welcome");        
+  // send a message to the chat acknowledging receipt of their message
+  bot.sendMessage(chatId, 'Received your message');
 });
-
-bot.on("polling_error", (err) => console.log(err));
-
