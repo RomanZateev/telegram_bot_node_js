@@ -4,11 +4,13 @@ var Agent = require('socks5-https-client/lib/Agent')
 
 var fs = require('fs')
 
-const TOKEN = "1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g"
+const TOKEN = `1046385267:AAF7FCr8oDTmHBgZY05BqAvQG_QckKits8g`
 
-const PORT = "3000"
+const PORT = `3000`
 
-const URL = "https://de5d44cd.ngrok.io"
+const URL = `https://my-applicate.herokuapp.com`
+
+const localURL = `https://de5d44cd.ngrok.io`
 
 const bot = new TelegramBot(TOKEN, 
     {
