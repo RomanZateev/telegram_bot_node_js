@@ -33,8 +33,9 @@ const bot = new TelegramBot(TOKEN,
     });
 
 app.listen(port, function() {
-    console.log('Port' + PORT);
-    console.log('Token' + TOKEN);
+    console.log('Port' + PORT)
+    console.log('Token' + TOKEN)
+    console.log('Url' + URL)
 });
 
 
